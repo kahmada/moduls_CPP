@@ -1,0 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/04 17:31:14 by kahmada           #+#    #+#             */
+/*   Updated: 2025/01/04 17:31:15 by kahmada          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#include "WrongCat.hpp"
+
+WrongCat::WrongCat() {
+    type = "WrongCat";
+    std::cout << "WrongCat constructor called" << std::endl;
+}
+WrongCat::WrongCat(WrongCat const &other)
+{
+	*this = other;
+	std::cout << "WrongCat copy constructor called!" << std::endl;
+}
+
+WrongCat	&WrongCat::operator=(WrongCat const &other)
+{
+	this->type = other.type;
+	return (*this);
+}
+WrongCat::~WrongCat() {
+    std::cout << "WrongCat destructor called" << std::endl;
+}
+
+void WrongCat::makeSound() const {
+    std::cout << "WrongAnimal makes a generic sound (not a cat's sound)" << std::endl;
+}
