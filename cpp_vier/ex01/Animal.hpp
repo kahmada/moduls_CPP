@@ -6,7 +6,7 @@
 /*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:56:08 by kahmada           #+#    #+#             */
-/*   Updated: 2025/01/12 18:56:09 by kahmada          ###   ########.fr       */
+/*   Updated: 2025/01/19 16:51:24 by kahmada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,4 @@ public:
     std::string getType() const;
 };
 
-#endif // ANIMAL_HPP
+#endif

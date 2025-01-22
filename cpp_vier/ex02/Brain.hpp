@@ -6,11 +6,10 @@
 /*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:57:52 by kahmada           #+#    #+#             */
-/*   Updated: 2025/01/12 18:57:53 by kahmada          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:54:11 by kahmada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Brain.hpp
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
 

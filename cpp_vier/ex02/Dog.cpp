@@ -6,12 +6,13 @@
 /*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:58:06 by kahmada           #+#    #+#             */
-/*   Updated: 2025/01/12 18:58:07 by kahmada          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:55:45 by kahmada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
-Dog::Dog() {
+Dog::Dog()
+{
     this->type = "Dog";
 	this->brain = new Brain();
 	std::cout << "Dog default constructor called!" << std::endl;
@@ -30,11 +31,13 @@ Dog	&Dog::operator=(Dog const &other)
 	this->type = other.getType();
 	return (*this);
 }
-Dog::~Dog() {
+Dog::~Dog()
+{
     delete this->brain;
     std::cout << "Dog destructor called" << std::endl;
 }
 
-void Dog::makeSound() const {
+void Dog::makeSound() const
+{
     std::cout << "Woof! Woof!" << std::endl;
 }

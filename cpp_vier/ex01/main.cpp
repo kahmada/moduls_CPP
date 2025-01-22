@@ -6,7 +6,7 @@
 /*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:56:59 by kahmada           #+#    #+#             */
-/*   Updated: 2025/01/14 20:19:54 by kahmada          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:42:09 by kahmada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,91 +17,33 @@
 #include "WrongCat.hpp"
 #include "Brain.hpp"
 
-static void	allocate(const Animal *animals[], int nb_animals)
+void alocate_and_dealocate(int nb_animals)
 {
-	for (int i = 0; i < nb_animals; i++)
+    const Animal* animals[nb_animals];
+    for (int i = 0; i < nb_animals; i++)
 	{
-		if (i < nb_animals / 2)
-			animals[i] = new Dog();// creyit 2 dog o 2 cat dk chi bach constructor t3ayt lo joj mrat b nsba l kola whd
-		else
-			animals[i] = new Cat();
-	}
+        if (i < nb_animals / 2)
+            animals[i] = new Dog();
+        else
+            animals[i] = new Cat();
+    }
+    for (int i = 0; i < nb_animals; i++)
+	{
+        animals[i]->makeSound();
+    }
+    for (int i = 0; i < nb_animals; i++)
+	{
+        delete animals[i];
+    }
 }
 
-static void	make_sound(const Animal *animals[], int nb_animals)
+int main()
 {
-	for (int i = 0; i < nb_animals; i++)
-		animals[i]->makeSound();
+    const int nb_animals = 4;
+    Dog dog;
+    Dog b(dog);
+    Dog c;
+    c = dog;
+    alocate_and_dealocate(nb_animals);
+    return 0;
 }
-
-static void	deallocate(const Animal *animals[], int nb_animals)
-{
-	for (int i = 0; i < nb_animals; i++)
-		delete animals[i];
-}
-
-int	main()
-{
-	const int		nb_animals = 4;
-	const Animal	*animals[nb_animals];
-
-	allocate(animals, nb_animals);
-	make_sound(animals, nb_animals);
-	deallocate(animals, nb_animals);
-	// Dog basic;//Cette structure est utile pour tester le constructeur de copie et le destructeur de la classe Dog. ghir bach nnt2akdo bli canonical form khdama
-	// {
-	// 	Dog tmp = basic;
-	// }
-	return 0;
-}
-/*
-when we remove  Dog basic;     {     Dog tmp = basic;     }
-like we remove all that :
-
-Animal constructor called
-Brain constructor called!
-Dog default constructor called!
-Animal constructor called
-Dog copy constructor called!
-Brain copy constructor called! 
-Brain destructor called!
-Dog destructor called
-Animal destructor called
-Brain destructor called!
-Dog destructor called
-Animal destructor called
-Analysons l'ordre des appels lors de la création et destruction des objets :
-
-Pour Dog basic :
-
-
-Constructeur Animal
-Constructeur Brain
-Constructeur Dog
-
-
-Pour Dog tmp = basic :
-
-
-Constructeur Animal
-Constructeur copie Dog
-Constructeur copie Brain
-
-
-Fin du bloc {} = destruction de tmp :
-
-
-Destructeur Brain
-Destructeur Dog
-Destructeur Animal
-
-
-Fin du programme = destruction de basic :
-
-
-Destructeur Brain
-Destructeur Dog
-Destructeur Animal
-
-Cela montre l'ordre correct d'initialisation (de la base vers la dérivée) et de destruction (de la dérivée vers la base) des objets.
-*/

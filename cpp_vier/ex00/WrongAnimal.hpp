@@ -6,7 +6,7 @@
 /*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:31:08 by kahmada           #+#    #+#             */
-/*   Updated: 2025/01/04 17:31:09 by kahmada          ###   ########.fr       */
+/*   Updated: 2025/01/19 16:50:58 by kahmada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,4 @@ public:
     virtual ~WrongAnimal();
 };
 
-#endif // WRONGANIMAL_HPP
+#endif

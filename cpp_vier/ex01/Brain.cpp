@@ -6,42 +6,36 @@
 /*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:56:17 by kahmada           #+#    #+#             */
-/*   Updated: 2025/01/12 18:56:18 by kahmada          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:50:29 by kahmada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Brain.hpp"
 
-Brain::Brain() {
+Brain::Brain()
+{
     for (int i = 0; i < 100; i++)
         this->ideas[i] = "\0";
     std::cout << "Brain constructor called!" << std::endl;
 }
 
-Brain::Brain(const Brain& other) {
+Brain::Brain(const Brain& other)
+{
     for (int i = 0; i < 100; i++)
         this->ideas[i] = other.ideas[i];
     std::cout << "Brain copy constructor called!" << std::endl;
 }
 
-Brain::~Brain() {
+Brain::~Brain()
+{
     std::cout << "Brain destructor called!" << std::endl;
 }
 
-Brain& Brain::operator=(const Brain& other) {
+Brain& Brain::operator=(const Brain& other)
+{
    for (int i = 0; i < 100; i++)
 		this->ideas[i] = other.ideas[i];
 	return (*this);
 }
 
-// void Brain::setIdea(int index, const std::string& idea) {
-//     if (index >= 0 && index < 100)
-//         ideas[index] = idea;
-// }
-
-// std::string Brain::getIdea(int index) const {
-//     if (index >= 0 && index < 100)
-//         return ideas[index];
-//     return "";
-// }

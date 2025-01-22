@@ -6,14 +6,15 @@
 /*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:31:14 by kahmada           #+#    #+#             */
-/*   Updated: 2025/01/04 17:31:15 by kahmada          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:49:48 by kahmada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() {
+WrongCat::WrongCat()
+{
     type = "WrongCat";
     std::cout << "WrongCat constructor called" << std::endl;
 }
@@ -28,7 +29,8 @@ WrongCat	&WrongCat::operator=(WrongCat const &other)
 	this->type = other.type;
 	return (*this);
 }
-WrongCat::~WrongCat() {
+WrongCat::~WrongCat()
+{
     std::cout << "WrongCat destructor called" << std::endl;
 }
 

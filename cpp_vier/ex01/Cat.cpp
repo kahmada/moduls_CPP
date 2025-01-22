@@ -6,14 +6,15 @@
 /*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 18:56:37 by kahmada           #+#    #+#             */
-/*   Updated: 2025/01/12 18:56:38 by kahmada          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:51:39 by kahmada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Cat.hpp"
 
-Cat::Cat() {
+Cat::Cat()
+{
     this->type = "Cat";
 	this->brain = new Brain();
 	std::cout << "Cat default constructor called!" << std::endl;
@@ -32,11 +33,13 @@ Cat	&Cat::operator=(Cat const &other)
 	this->type = other.getType();
 	return (*this);
 }
-Cat::~Cat() {
+Cat::~Cat()
+{
     delete this->brain;
 	std::cout << "Cat destructor called!" << std::endl;
 }
 
-void Cat::makeSound() const {
+void Cat::makeSound() const
+{
     std::cout << "Meow! Meow!" << std::endl;
 }

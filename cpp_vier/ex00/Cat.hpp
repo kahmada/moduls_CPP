@@ -6,7 +6,7 @@
 /*   By: kahmada <kahmada@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:30:24 by kahmada           #+#    #+#             */
-/*   Updated: 2025/01/04 17:30:26 by kahmada          ###   ########.fr       */
+/*   Updated: 2025/01/22 14:19:57 by kahmada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
     Cat();
     Cat(Cat const &other);
     Cat	&operator=(Cat const &other);
-    virtual void makeSound() const;
+    void makeSound() const;
     ~Cat();
 };
 #endif
