@@ -84,7 +84,7 @@ void ScalarConverter::convert(std::string &str)
 			std::cerr << "Error: Unknown type\n";
 			return;
 		}
-	// alors ici on a la value et on la cast n plusieur types selon le code acci si la valeur est char 
+	// alors ici on a la value et on la cast en plusieur types selon le code acci si la valeur est char 
 		displayChar(value);
 		displayInt(value);
 		displayFloat(value);
@@ -101,20 +101,27 @@ void ScalarConverter::convert(std::string &str)
 
 
 
+/*
+Si c'est un seul caractère non numérique → CHAR
+Si c'est nan, inf, etc. → FLOAT ou DOUBLE
+Si ça contient un . → FLOAT ou DOUBLE
+Si ça ne contient que des chiffres ou +/- → INT
+Sinon → UNKNOWN
+*/
 
-
-
-
-
-
-
-
+//Not a Number : nan :DOUBLE
+//nanf : NaN en notation flottante : FLOAT
+//"+inf":	Positive Infinity (+∞)	: DOUBLE
+//"-inf":	Negative Infinity (-∞)	:DOUBLE
+//"+inff":	+∞ en float	:FLOAT
+//"-inff":	-∞ en float	:FLOAT
+//nan → Résultat d’une opération mathématiquement indéfinie comme 0.0 / 0.0 ou sqrt(-1).
+//inf → Résultat d’une division par zéro comme 1.0 / 0.0.
 
 
 
 /*
 En C++, les casts permettent de convertir une variable d'un type à un autre. Il existe plusieurs types de casts :
-
 C-style cast : (type)variable (simple mais risqué).
 Static_cast : Vérifie la conversion à la compilation, utilisé pour les conversions sûres entre types compatibles.
 Dynamic_cast : Vérifie à l'exécution, utilisé pour les conversions de pointeurs ou références dans une hiérarchie de classes polymorphiques.
