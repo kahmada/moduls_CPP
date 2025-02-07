@@ -16,6 +16,13 @@ int main() {
     }
     return 0;
 }
+
+
+
+/*
+✔️ std::exception → C'est la classe de base pour toutes les exceptions standard en C++.
+✔️ const → L'objet e ne peut pas être modifié dans le bloc catch.
+✔️ & e (Référence constante) → Permet d'éviter une copie de l'exception (plus efficace).*/
 /*
 catch (const std::exception& e) { ... }
 

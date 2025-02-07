@@ -77,4 +77,4 @@ std::ostream &operator<<(std::ostream &o, Form const &rhs)
       << ", required grade to sign: " << rhs.getGradeToSign()
       << ", required grade to execute: " << rhs.getGradeToExecute();
     return o;
-}
+}// si l objet est form il cout en utilisant ce overload

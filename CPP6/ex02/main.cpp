@@ -59,7 +59,6 @@ int main()
 {
     Base* base = generate();
     std::cout << "Identification via Base*:" << std::endl;
-    identify(base);
 
     std::cout << "Identification via Base&:" << std::endl;
     identify(*base);
@@ -93,3 +92,13 @@ identify(Base& p) utilise une référence pour identifier dynamiquement le type 
 main() vérifie que ces fonctions fonctionnent correctement.
 Cet exercice met en pratique le polymorphisme, les conversions dynamiques avec dynamic_cast, et l'identification des types réels en C++.
 */
+//static cast
+//Effectué à la compilation (plus rapide).
+//✅ Utilisé pour les conversions sûres et connues (sans hiérarchie polymorphique).
+//✅ Aucune vérification à l'exécution → peut causer un comportement indéfini en cas de
+
+//dynamic_cast:
+//✅ Utilisé pour le polymorphisme (nécessite une classe avec au moins une fonction virtuelle).
+//✅ Effectue une vérification à l'exécution → évite les erreurs de conversion dangereuses.
+//✅ Peut retourner nullptr (pointeur) ou lever std::bad_cast (référence) si le cast échoue.
+//❌ Coût en performance plus élevé qu'un static_cast car il vérifie dynamiquement le type

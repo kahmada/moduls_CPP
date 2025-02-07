@@ -30,7 +30,7 @@ public:
 	class GradeTooHighException : public std::exception
 	{
 		public:
-			const char* what() const throw();
+			const char* what() const throw();//what deja existant et on l a override il est deja type char *
 	};
 };
 

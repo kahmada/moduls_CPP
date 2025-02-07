@@ -11,7 +11,7 @@ int main()
     Data* deserialized = Serializer::deserialize(raw);
     if (deserialized == &data) {
         std::cout << "Serialization and deserialization are successful!" << std::endl;
-        std::cout << "Data ID: " << deserialized->id << ", Name: "  << std::endl;
+        std::cout << "Data ID: " << deserialized->id << std::endl;
     } else {
         std::cerr << "Error: Pointers do not match!" << std::endl;
     }
@@ -28,4 +28,11 @@ les systèmes complexes.
 par exemple le pointeur contien l address memoire alors c est quelque chose en hexadecimal
 donc on convert cette valeur hexa en decimal puis on deserialized alors si comme on le convertur 
 en herxa a nouveau
+*/
+
+/*
+Pourquoi utiliser uintptr_t ?
+Conversion sûre entre pointeurs et nombres entiers.
+Utilisé pour la sérialisation lorsque les pointeurs doivent être stockés sous forme d'entiers.
+Évite des erreurs d’alignement et de troncature qui pourraient survenir avec un type entier classique (int, long).
 */

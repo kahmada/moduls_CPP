@@ -69,16 +69,16 @@ void ScalarConverter::convert(std::string &str)
 		switch (type)
 		{
 		case CHAR:
-			value = static_cast<double>(str[0]);
+			value = static_cast<double>(str[0]);//// 'A' devient 65.0 c est pour ca on travaille avec double
 			break;
 		case INT:
-			value = std::stoi(str);
+			value = std::stoi(str);//// "42" devient 42.0
 			break;
 		case FLOAT:
-			value = std::stof(str);
+			value = std::stof(str);//// "3.14f" devient 3.1400001 (en double)
 			break;
 		case DOUBLE:
-			value = std::stod(str);
+			value = std::stod(str);//// "3.1415926535" reste tel quel
 			break;
 		default:
 			std::cerr << "Error: Unknown type\n";
@@ -96,7 +96,14 @@ void ScalarConverter::convert(std::string &str)
 	}
 }
 
+/*
+L'utilisation de double est idéale car :
 
+Il peut stocker tous les types (char, int, float, double) sans perte immédiate.
+Il permet d'afficher les conversions facilement en castant vers d'autres types.
+Il gère naturellement les cas spéciaux (nan, +inf, -inf).
+Il évite des conversions intermédiaires inutiles.
+*/
 
 
 
