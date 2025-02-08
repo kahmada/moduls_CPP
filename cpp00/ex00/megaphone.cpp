@@ -28,3 +28,8 @@ int main(int argc, char **argv)
     }
     return (0);
 }
+
+/*
+std::endl insère un saut de ligne et vide le buffer (flush), ce qui peut ralentir l'exécution.
+"\n" insère uniquement un saut de ligne, sans vider le buffer, donc plus performant. 🚀
+*/

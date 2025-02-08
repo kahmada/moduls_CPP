@@ -28,3 +28,19 @@ int main()
 
     return 0;
 }
+// int main()
+// {
+//     int  a = 3;
+//     int &b = a;
+//     int &c = b;
+//     int *p = &a;
+
+//     std::cout <<&a<<std::endl;
+//     std::cout<< &b<< std::endl;
+//     std::cout << &c<<std::endl;
+//     std::cout << c << std::endl;
+//     std::cout << *p << std::endl;
+//      std::cout << p << std::endl;
+//     std::cout << &p << std::endl;
+
+// }

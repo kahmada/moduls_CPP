@@ -58,7 +58,7 @@ void Contact::setDetails()
     std::cout << "Enter Darkest Secret: ";
     darkestSecret = read_line(darkestSecret, "Enter Darkest Secret: ");
 }
-
+// set the atribut direct without acces to it a partire une methode de classe puisque l amethode qu on est entrain d implementer et de cette class
 void Contact::displaySummary(int index)
 {
     std::cout << "|";
