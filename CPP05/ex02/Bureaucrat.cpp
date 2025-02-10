@@ -19,7 +19,7 @@ void Bureaucrat::signForm(AForm &form)
 {
     try
     {
-        form.beSigned(*this);  // Try to sign the form with the bureaucrat
+        form.beSigned(*this);
         std::cout << this->getName() << " signed " << form.getName() << std::endl;
     }
     catch (const std::exception &e)
@@ -36,9 +36,9 @@ Bureaucrat::Bureaucrat() : name("Default"), grade(150)
 Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name)
 {
 	if (grade > 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	if (grade < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	this->grade = grade;
 }
 
@@ -79,14 +79,14 @@ int	Bureaucrat::getGrade() const
 void	Bureaucrat::decrementGrade()
 {
 	if (this->grade == 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	this->grade++;
 }
 
 void	Bureaucrat::incrementGrade()
 {
 	if (this->grade == 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	this->grade--;
 }
 

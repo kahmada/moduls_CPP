@@ -1,7 +1,6 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
-#include <string>
 #include <iostream>
 #include <stdexcept>
 #include "Bureaucrat.hpp"

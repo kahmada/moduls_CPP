@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include "Bureaucrat.hpp"
 
-// Abstract base class
+
 class Bureaucrat;
 class AForm
 {
@@ -17,39 +17,37 @@ private:
     int const gradeToExecute;
 
 public:
-    // Constructor and Destructor
+    AForm();
     AForm(std::string const &name, int gradeToSign, int gradeToExecute);
+    AForm(AForm const &src);
+    AForm &operator=(AForm const &rhs);
     virtual ~AForm() {}
 
-    // Getters
     std::string const &getName() const;
     bool getSignStatus() const;
     int getGradeToSign() const;
     int getGradeToExecute() const;
 
-    // Methods to be implemented by derived classes
     virtual void execute(Bureaucrat const &executor) const = 0;
 
-    // Sign method
     void beSigned(Bureaucrat &bureaucrat);
 
-    // Exceptions
     class GradeTooHighException : public std::exception
     {
     public:
-        const char *what() const throw() { return "Grade is too high"; }
+        const char *what() const throw();
     };
 
     class GradeTooLowException : public std::exception
     {
     public:
-        const char *what() const throw() { return "Grade is too low"; }
+        const char *what() const throw();
     };
 
     class FormNotSignedException : public std::exception
     {
     public:
-        const char *what() const throw() { return "Form is not signed"; }
+        const char *what() const throw();
     };
 };
 

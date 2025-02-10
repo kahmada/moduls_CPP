@@ -2,11 +2,11 @@
 #include "Form.hpp"
 
 
-void Bureaucrat::signForm(Form &form)// 
+void Bureaucrat::signForm(Form &form) 
 {
     try
     {
-        form.beSigned(*this);  // This calls the Form's beSigned method
+        form.beSigned(*this);
         std::cout << this->getName() << " signed " << form.getName() << std::endl;
     }
     catch (std::exception &e)
@@ -14,7 +14,7 @@ void Bureaucrat::signForm(Form &form)//
         std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
     }
 }
-//il entre au beSigned il vois si le form a deja signe ou bien le grade n est pas sufisant si ca il retre au catch pour faire l execption 
+
 Bureaucrat::Bureaucrat() : name("Default"), grade(150)
 {
 	return ;
@@ -23,9 +23,9 @@ Bureaucrat::Bureaucrat() : name("Default"), grade(150)
 Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name)
 {
 	if (grade > 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	if (grade < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	this->grade = grade;
 }
 

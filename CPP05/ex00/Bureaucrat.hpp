@@ -1,7 +1,6 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include <string>
 #include <iostream>
 #include <stdexcept>
 
@@ -30,7 +29,7 @@ public:
 	class GradeTooHighException : public std::exception
 	{
 		public:
-			const char* what() const throw();//what deja existant et on l a override il est deja type char *
+			const char* what() const throw();
 	};
 };
 

@@ -8,9 +8,9 @@ int main()
     try
     {
         Bureaucrat b1("Bot", 50);
-        ShrubberyCreationForm sForm("Home");//145, 137
-        RobotomyRequestForm rForm("Target1");//72, 45
-        PresidentialPardonForm pForm("Target2");//25, 5
+        ShrubberyCreationForm sForm("Home");
+        RobotomyRequestForm rForm("Target1");
+        PresidentialPardonForm pForm("Target2");
 
         b1.signForm(sForm);
         b1.signForm(rForm);
@@ -24,6 +24,5 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-
     return 0;
 }

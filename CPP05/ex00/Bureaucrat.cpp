@@ -4,16 +4,17 @@
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(150) {}
 
-Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name)// darum es ist const (name) und darum wir konnen nicht mache es innen die funcktion
+Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name)
 {
     if (grade > 150)
-        throw GradeTooLowException();//fur einen exeption rufen an
+        throw GradeTooLowException();//fur einen exeptionen rufen an
     if (grade < 1)
-        throw GradeTooHighException();// die selbst zuschtand
+        throw GradeTooHighException();
     this->grade = grade;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &other) : name(other.name){ //wir konnen machen es im initailis list
+Bureaucrat::Bureaucrat(Bureaucrat const &other) : name(other.name)
+{
     this->grade = other.grade;
 }
 
@@ -33,7 +34,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
     return "Grade too low!";
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()// das beteuted dass wir konnen nicht einen exption trow inen die exeption
+const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
     return "Grade too high!";
 }
@@ -67,16 +68,3 @@ std::ostream &operator<<(std::ostream &o, Bureaucrat const &rhs)
     o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
     return o;
 }
-
-
-
-
-
-// try
-// {
-//     // Code qui peut lever une exception
-// }
-// catch (const std::exception &e)
-// {
-//     // Gestion de l'exception
-// }

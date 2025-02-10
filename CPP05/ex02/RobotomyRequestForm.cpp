@@ -2,6 +2,19 @@
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target)
     : AForm(target, 72, 45) {}
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other)
+    : AForm(other) {}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &other)
+{
+    if (this != &other)
+    {
+        *this = other;
+    }
+    return *this;
+}
+
+RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
