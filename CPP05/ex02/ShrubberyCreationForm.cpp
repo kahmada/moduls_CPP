@@ -20,10 +20,6 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-std::string const &ShrubberyCreationForm::getTarget() const
-{
-    return target;
-}
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {

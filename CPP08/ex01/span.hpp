@@ -13,18 +13,16 @@ class Span
 
     public:
         Span();
-        Span(unsigned int n);  // Suppression du constructeur par défaut
+        Span(unsigned int n);
         Span(const Span &src);
         ~Span();
         Span &operator=(const Span &rhs);
 
-        // Méthodes principales
         void addNumber(int n);
-        int shortestSpan() const;  // Ajout de const
-        int longestSpan() const;   // Ajout de const
+        int shortestSpan() const;
+        int longestSpan() const;
         void fillSpanRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
-        // Exceptions
         class SpanFullException : public std::exception
         {
             public:
@@ -37,3 +35,5 @@ class Span
                 virtual const char *what() const throw();
         };
 };
+
+

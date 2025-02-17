@@ -24,7 +24,7 @@ void Span::addNumber(int n) {
 
 int Span::shortestSpan() const {  // Trouve la plus petite différence entre deux nombres.
     if (_vec.size() <= 1)
-        throw NotEnoughElementsException();  // Correction de l'exception
+        throw NotEnoughElementsException(); 
 
     std::vector<int> tmp = _vec;
     std::sort(tmp.begin(), tmp.end());
@@ -37,17 +37,18 @@ int Span::shortestSpan() const {  // Trouve la plus petite différence entre deu
     return min;
 }
 
-int Span::longestSpan() const {  // Ajout de `const`
+int Span::longestSpan() const {//la difference entre le plus grand et le plus putit 
     if (_vec.size() <= 1)
-        throw NotEnoughElementsException();  // Correction de l'exception
+        throw NotEnoughElementsException();
 
     int min = *std::min_element(_vec.begin(), _vec.end());
     int max = *std::max_element(_vec.begin(), _vec.end());
     return max - min;
 }
 
-void Span::fillSpanRange(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
-    if (std::distance(begin, end) + _vec.size() > _n)  // Vérifier avant d'insérer
+void Span::fillSpanRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+    if (std::distance(begin, end) + _vec.size() > _n)
         throw SpanFullException();
     _vec.insert(_vec.end(), begin, end);
 }

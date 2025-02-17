@@ -1,5 +1,9 @@
 #include "Form.hpp"
 
+Form::Form()
+    : name("default"), issigned(false), gradesigne(150), gradeexecute(150)
+{
+}
 Form::Form(std::string const name, int const gradeToSign, int const gradeToExecute)
     : name(name), issigned(false), gradesigne(gradeToSign), gradeexecute(gradeToExecute)
 {

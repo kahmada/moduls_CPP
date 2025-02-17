@@ -2,8 +2,12 @@
 #include "Bureaucrat.hpp"
 #include <fstream>
 
+AForm::AForm()
+    : name("default"), isSigned(false), gradeToSign(150), gradeToExecute(150)
+{
+}
 
-AForm::AForm() : name("default"), isSigned(false), gradeToSign(1), gradeToExecute(1) {}
+
 AForm::AForm(std::string const &name, int gradeToSign, int gradeToExecute)
     : name(name), isSigned(false), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute)
 {

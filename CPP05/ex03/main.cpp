@@ -2,7 +2,6 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-
 #include "Intern.hpp"
 #include "Bureaucrat.hpp" 
 
@@ -20,7 +19,6 @@ int main() {
     catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
-
     return 0;
 }
 

@@ -14,6 +14,7 @@ private:
     int const gradeexecute;
 
 public:
+    Form();
     Form(std::string const name, int const gradeToSign, int const gradeToExecute);
     Form(Form const &form);
     Form &operator=(Form const &rhs);
