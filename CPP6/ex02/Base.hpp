@@ -3,7 +3,8 @@
 
 class Base {
 public:
-    virtual ~Base(); // Virtual destructor for polymorphism
+    virtual ~Base();
+    
 };
 
 #endif

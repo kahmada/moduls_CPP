@@ -10,6 +10,7 @@ int main() {
         bob.decrementGrade();
         std::cout << bob << std::endl;
         Bureaucrat invalid_br("Invalid", 200);
+        Bureaucrat invalid_br2("Invalid2", 0);
     }
     catch (const std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;

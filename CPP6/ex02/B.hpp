@@ -4,7 +4,6 @@
 #include "Base.hpp"
 
 class B : public Base {
-    // Empty class inheriting from Base
 };
 
 #endif

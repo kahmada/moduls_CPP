@@ -18,21 +18,3 @@ int main()
 
     return 0;
 }
-/*
-Résumé :
-Cet exercice vous apprend à convertir une adresse mémoire en une forme brute 
-(un entier de type uintptr_t) et à la reconvertir en pointeur. Cela montre 
-comment manipuler les adresses mémoire de manière sécurisée et permet de mieux 
-comprendre les concepts de sérialisation/désérialisation, indispensables dans 
-les systèmes complexes.
-par exemple le pointeur contien l address memoire alors c est quelque chose en hexadecimal
-donc on convert cette valeur hexa en decimal puis on deserialized alors si comme on le convertur 
-en herxa a nouveau
-*/
-
-/*
-Pourquoi utiliser uintptr_t ?
-Conversion sûre entre pointeurs et nombres entiers.
-Utilisé pour la sérialisation lorsque les pointeurs doivent être stockés sous forme d'entiers.
-Évite des erreurs d’alignement et de troncature qui pourraient survenir avec un type entier classique (int, long).
-*/

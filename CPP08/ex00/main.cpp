@@ -1,17 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <list>
-#include <deque>
+
 #include "easyfind.hpp"
 
-template <typename T>
-typename T::iterator easyfind(T &container, int value)
-{
-    typename T::iterator it = std::find(container.begin(), container.end(), value);
-    if (it == container.end())
-        throw std::runtime_error("Value not found");
-    return it;
-}
+
 int main() {
     
     std::vector<int> vec;
@@ -37,7 +27,7 @@ int main() {
 
     try {
         std::cout << "Searching in vector: ";
-        std::vector<int>::iterator it = easyfind(vec, 30);
+        std::vector<int>::iterator it = easyfind(vec, 30);                                                              
         std::cout << "Found: " << *it << std::endl;
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
@@ -61,3 +51,9 @@ int main() {
     return 0;
 }
 
+/*
+🟢 La fonction easyfind prend un conteneur T en référence et un entier value, puis retourne un itérateur du même type que T, indiquant la position de value dans le conteneur.
+
+👉 Si value est trouvée, la fonction retourne un itérateur pointant dessus.
+👉 Si value n'est pas trouvée, elle lèvera une exception (std::runtime_error).
+*/

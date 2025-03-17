@@ -11,7 +11,7 @@ int main()
 
         std::cout << form1 << std::endl;
         b1.signForm(form1);
-        b2.signForm(form1);
+        b2.signForm(form1);//
         b1.signForm(form2);
     }
     catch (std::exception &e)

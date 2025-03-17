@@ -1,6 +1,9 @@
-#include "span.hpp"
+#include "Span.hpp"
 
-Span::Span(unsigned int n) : _n(n) {}
+Span::Span() : _n(0), _vec(0){}
+
+
+Span::Span(unsigned int n) : _n(n) , _vec(0){}
 
 Span::Span(const Span &src) {
     *this = src;
@@ -22,7 +25,7 @@ void Span::addNumber(int n) {
     _vec.push_back(n);
 }
 
-int Span::shortestSpan() const {  // Trouve la plus petite différence entre deux nombres.
+int Span::shortestSpan() const {
     if (_vec.size() <= 1)
         throw NotEnoughElementsException(); 
 
@@ -37,7 +40,7 @@ int Span::shortestSpan() const {  // Trouve la plus petite différence entre deu
     return min;
 }
 
-int Span::longestSpan() const {//la difference entre le plus grand et le plus putit 
+int Span::longestSpan() const {
     if (_vec.size() <= 1)
         throw NotEnoughElementsException();
 
@@ -46,18 +49,11 @@ int Span::longestSpan() const {//la difference entre le plus grand et le plus pu
     return max - min;
 }
 
-void Span::fillSpanRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
-{
-    if (std::distance(begin, end) + _vec.size() > _n)
-        throw SpanFullException();
-    _vec.insert(_vec.end(), begin, end);
-}
-
 const char *Span::SpanFullException::what() const throw() {
-    return "Span is full! Cannot add more numbers.";
+    return "Cannot add more numbers.";
 }
 
 const char *Span::NotEnoughElementsException::what() const throw() {
-    return "Not enough elements to calculate a span!";
+    return "Not enough elements";
 }
 

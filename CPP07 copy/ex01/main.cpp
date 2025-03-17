@@ -17,20 +17,20 @@ void print_string(std::string& str)
 }
 
 int main()
-{
+{ 
     int arr[] = {1, 2, 3, 4, 5};
     size_t length = sizeof(arr) / sizeof(arr[0]);
 
-    std::cout << "Affichage des éléments du tableau : ";
+    std::cout << "tab : ";
     iter(arr, length, print_int);
     std::cout << std::endl;
 
-    std::cout << "Ajout de 1 à chaque élément du tableau : ";
+    std::cout << "Ajout de 1 a tab : ";
     iter(arr, length, add_one);
     iter(arr, length, print_int);
     std::cout << std::endl;
 
-    std::string str_arr[] = {"hello", "world", "iter", "template"};
+    std::string str_arr[] = {"hello", "world", "hello1", "world1"};
     size_t str_length = sizeof(str_arr) / sizeof(str_arr[0]);
 
     std::cout << "Affichage des chaînes : ";

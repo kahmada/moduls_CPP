@@ -4,11 +4,11 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = spam
 
-SRCS = main.cpp span.cpp
+SRCS = main.cpp Span.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-HEADERS = span.hpp
+HEADERS = Span.hpp
 
 all: $(NAME)
 
