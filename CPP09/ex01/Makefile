@@ -2,13 +2,13 @@ CPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = btc
+NAME = RPN
 
-SRCS = BitcoinExchange.cpp main.cpp
+SRCS = RPN.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-HEADERS = BitcoinExchange.hpp
+HEADERS = RPN.hpp
 
 all: $(NAME)
 

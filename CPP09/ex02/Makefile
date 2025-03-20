@@ -2,13 +2,13 @@ CPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = btc
+NAME = PmergeMe
 
-SRCS = BitcoinExchange.cpp main.cpp
+SRCS = PmergeMe.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-HEADERS = BitcoinExchange.hpp
+HEADERS = PmergeMe.hpp
 
 all: $(NAME)
 
