@@ -17,15 +17,35 @@ void PmergeMe::processInput(int argc, char **argv) {
         exit(1);
     }
     for (int i = 1; i < argc; i++) {
-        int num;
         std::stringstream ss(argv[i]);
-        if (!(ss >> num) || num < 0) {
+        int num;
+        char extra;
+
+        if (!(ss >> num) || ss >> extra) { // Vérifie si un caractère reste après l'entier
             std::cerr << "Error: Invalid input." << std::endl;
             exit(1);
         }
+
+        if (num < 0) { // Vérification des nombres négatifs
+            std::cerr << "Error: Negative numbers are not allowed." << std::endl;
+            exit(1);
+        }
+
         _vector.push_back(num);
         _deque.push_back(num);
     }
+}
+
+
+std::vector<int> PmergeMe::generateJacobsthalSequence(size_t size) {
+    std::vector<int> seq;
+    seq.push_back(0);
+    seq.push_back(1);
+
+    while (seq.back() < static_cast<int>(size)) {
+        seq.push_back(seq[seq.size() - 1] + 2 * seq[seq.size() - 2]);//J(n)=J(n−1)+2×J(n−2)
+    }
+    return seq;
 }
 
 void PmergeMe::mergeInsertSortVector(std::vector<int> &arr) {
@@ -50,21 +70,40 @@ void PmergeMe::mergeInsertSortDeque(std::deque<int> &arr) {
 
 void PmergeMe::mergeVector(std::vector<int> &arr, std::vector<int> &left, std::vector<int> &right) {
     arr.clear();
+
+    std::vector<int> jacobsthal = generateJacobsthalSequence(left.size() + right.size()); // Assure-toi que cette fonction est bien compatible avec C++98
+
     size_t i = 0, j = 0;
-    while (i < left.size() && j < right.size())
-        arr.push_back((left[i] < right[j]) ? left[i++] : right[j++]);
+
+    for (size_t index = 0; index < jacobsthal.size(); ++index) { // Remplacement de la boucle range-based
+        size_t k = jacobsthal[index]; // Récupération de la valeur
+
+        while (k-- && i < left.size() && j < right.size())
+            arr.push_back((left[i] < right[j]) ? left[i++] : right[j++]);
+    }
+
     while (i < left.size()) arr.push_back(left[i++]);
     while (j < right.size()) arr.push_back(right[j++]);
 }
 
 void PmergeMe::mergeDeque(std::deque<int> &arr, std::deque<int> &left, std::deque<int> &right) {
     arr.clear();
+
+    std::vector<int> jacobsthal = generateJacobsthalSequence(left.size() + right.size());
+
     size_t i = 0, j = 0;
-    while (i < left.size() && j < right.size())
-        arr.push_back((left[i] < right[j]) ? left[i++] : right[j++]);
+
+    for (size_t index = 0; index < jacobsthal.size(); ++index) { // Remplacement de la boucle range-based
+        size_t k = jacobsthal[index]; // Récupération de la valeur
+
+        while (k-- && i < left.size() && j < right.size())
+            arr.push_back((left[i] < right[j]) ? left[i++] : right[j++]);
+    }
+
     while (i < left.size()) arr.push_back(left[i++]);
     while (j < right.size()) arr.push_back(right[j++]);
 }
+
 
 void PmergeMe::sortAndMeasureTime() {
     std::cout << "Before: ";

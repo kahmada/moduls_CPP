@@ -34,7 +34,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 
     outfile << "      ccee88oo" << std::endl;
     outfile << "  C8O8O8Q8PoOb o8oo" << std::endl;
-    outfile << " dOB69QO8PdUOpugoO9bD" << std::endl;
+    outfile << " dOB69QO8yrsPdUOpugoO9bD" << std::endl;
     outfile << "CgggbU8OU qOp qOdoUOdcb" << std::endl;
     outfile << " 6OuU  /p u gcoUodpP" << std::endl;
     outfile << "   \\LLL/  /douUP " << std::endl;
