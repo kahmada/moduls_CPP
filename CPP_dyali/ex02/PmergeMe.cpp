@@ -37,16 +37,29 @@ void PmergeMe::processInput(int argc, char **argv) {
 }
 
 
-std::vector<int> PmergeMe::generateJacobsthalSequence(size_t size) {
-    std::vector<int> seq;
-    seq.push_back(0);
-    seq.push_back(1);
+// std::vector<int> PmergeMe::generateJacobsthalSequence(size_t size) {
+//     std::vector<int> seq;
+//     seq.push_back(0);
+//     seq.push_back(1);
 
-    while (seq.back() < static_cast<int>(size)) {
-        seq.push_back(seq[seq.size() - 1] + 2 * seq[seq.size() - 2]);//J(n)=J(n−1)+2×J(n−2)
+//     while (seq.back() < static_cast<int>(size)) {
+//         seq.push_back(seq[seq.size() - 1] + 2 * seq[seq.size() - 2]);//J(n)=J(n−1)+2×J(n−2)
+//     }
+//     return seq;
+// }
+
+std::vector<int> PmergeMe::generateJacobsthalSequence(size_t size) {
+    std::vector<int> seq = {0, 1}; 
+
+    while (true) {
+        int nextValue = seq.back() + 2 * seq[seq.size() - 2];  // J(n) = J(n-1) + 2*J(n-2)
+        if (nextValue >= static_cast<int>(size)) break;  // Stoppe, wenn größer als 'size'
+        seq.push_back(nextValue);
     }
+
     return seq;
 }
+
 
 void PmergeMe::mergeInsertSortVector(std::vector<int> &arr) {
     if (arr.size() < 2) return;

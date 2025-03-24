@@ -19,8 +19,8 @@ private:
 
 public:
     BitcoinExchange();
-    BitcoinExchange(const BitcoinExchange &);
-    BitcoinExchange &operator=(const BitcoinExchange &);
+    BitcoinExchange(const BitcoinExchange &btc);
+    BitcoinExchange &operator=(const BitcoinExchange &btc);
     ~BitcoinExchange();
 
     static void putPrices(const std::string &fileName);

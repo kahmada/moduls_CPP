@@ -2,13 +2,13 @@
 
 BitcoinExchange::BitcoinExchange() {}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
-    this->data = other.data;
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &btc) {
+    this->data = btc.data;
 }
 
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
-    if (this != &other)
-        this->data = other.data;
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &btc) {
+    if (this != &btc)
+        this->data = btc.data;
     return *this;
 }
 

@@ -10,7 +10,7 @@ class MutantStack : public std::stack<T>
 {
 public:
     MutantStack() {}
-    MutantStack(MutantStack const &mutantStack) : std::stack<T>(mutantStack) {}//inheritance so on apel constructor de class de base
+    MutantStack(MutantStack const &mutantStack) : std::stack<T>(mutantStack) {}
     MutantStack &operator=(MutantStack const &rhs)
     {
         if (this != &rhs) {

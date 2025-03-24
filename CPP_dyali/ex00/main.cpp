@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
     }
 
     BitcoinExchange btc;
-    btc.parseDatabase("data.csv"); // Assurez-vous que le fichier data.csv existe avec les données du BTC
+    btc.parseDatabase("data.csv");
     btc.parseInputFile(argv[1]);
 
     return 0;
