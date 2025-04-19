@@ -26,9 +26,15 @@ bool BitcoinExchange::isValidValue(const std::string &value) {
 }
 
 double BitcoinExchange::getClosestPrice(const std::string &date) const {
-    std::map<std::string, double>::const_iterator it = data.lower_bound(date);
+    std::map<std::string, double>::const_iterator it = data.lower_bound(date);// lower_bound retourn la date plus grand ou egal au datte recherche (la plus proche)
     if (it == data.end() || (it != data.begin() && it->first != date))
         --it;
+    /*
+    Si la date exacte n'est pas trouvée et qu'il ne s'agit pas du premier élément, on recule d'un cran (--it).
+
+    Retourne le prix correspondant ou 0 si aucun prix n'existe.
+
+    */
     return (it != data.end()) ? it->second : 0;
 }
 
@@ -63,6 +69,7 @@ void BitcoinExchange::parseInputFile(const std::string &fileName) const {
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         if (std::getline(iss, date, '|') && std::getline(iss, value)) {
+            //Ces deux lignes servent à supprimer les espaces inutiles autour des chaînes date et value, ce qui est important pour éviter des erreurs lors du traitement des données.
             date.erase(date.find_last_not_of(" ") + 1);
             value.erase(0, value.find_first_not_of(" "));
             if (!isValidDate(date)) {
