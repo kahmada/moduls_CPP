@@ -11,7 +11,7 @@
 
 class BitcoinExchange {
 private:
-    std::map<std::string, double> data;//Stocke la date comme clé et le prix comme valeur dans la structure data.
+    std::map<std::string, double> data;
     
     static bool isValidDate(const std::string &date);
     static bool isValidValue(const std::string &value);

@@ -37,48 +37,131 @@ void PmergeMe::processInput(int argc, char **argv) {
 }
 
 
-std::vector<int> PmergeMe:: generateJacobsthalSequence(size_t size) {
-    std::vector<int> seq;
-    seq.push_back(0);
-    seq.push_back(1);
+std::vector<int> PmergeMe::generateJacobsthalSequence(size_t size) {
+    std::vector<int> seq = {0, 1}; 
 
-    while (seq.back() < static_cast<int>(size)) {
-        seq.push_back(seq[seq.size() - 1] + 2 * seq[seq.size() - 2]);//J(n)=J(n−1)+2×J(n−2)
+    while (true) {
+        int nextValue = seq.back() + 2 * seq[seq.size() - 2];  // J(n) = J(n-1) + 2*J(n-2)
+        if (nextValue >= static_cast<int>(size)) break;  // Stoppe, wenn größer als 'size'
+        seq.push_back(nextValue);
     }
+
     return seq;
 }
 
-// std::vector<int> PmergeMe::generateJacobsthalSequence(size_t size) {
-//     std::vector<int> seq = {0, 1}; 
+void PmergeMe::mergeInsertSortVector(std::vector<int>& arr) {
+    if (arr.size() < 2)
+        return;
 
-//     while (true) {
-//         int nextValue = seq.back() + 2 * seq[seq.size() - 2];  // J(n) = J(n-1) + 2*J(n-2)
-//         if (nextValue >= static_cast<int>(size)) break;  // Stoppe, wenn größer als 'size'
-//         seq.push_back(nextValue);
-//     }
+    std::vector<int> larger;
+    std::vector<int> smaller;
 
-//     return seq;
-// }
+    // Step 1: Pair and split
+    size_t i = 0;
+    for (; i + 1 < arr.size(); i += 2) {
+        if (arr[i] < arr[i + 1]) {
+            smaller.push_back(arr[i]);
+            larger.push_back(arr[i + 1]);
+        } else {
+            smaller.push_back(arr[i + 1]);
+            larger.push_back(arr[i]);
+        }
+    }
 
+    // If odd size, remember the last element
+    bool hasLeftover = (arr.size() % 2 != 0);
+    int leftover = hasLeftover ? arr.back() : 0;
 
-void PmergeMe::mergeInsertSortVector(std::vector<int> &arr) {
-    if (arr.size() < 2) return;
-    size_t mid = arr.size() / 2;
-    std::vector<int> left(arr.begin(), arr.begin() + mid);
-    std::vector<int> right(arr.begin() + mid, arr.end());
-    mergeInsertSortVector(left);
-    mergeInsertSortVector(right);
-    mergeVector(arr, left, right);
+    // Step 2: Recursively sort the larger elements
+    mergeInsertSortVector(larger);
+
+    // Step 3: Insert smaller elements in Jacobsthal order
+    std::vector<int> jacob = generateJacobsthalSequence(smaller.size());
+    std::vector<bool> inserted(smaller.size(), false);
+
+    arr = larger;
+
+    for (size_t j = 1; j < jacob.size(); ++j) {
+        size_t index = jacob[j];
+        if (index < smaller.size() && !inserted[index]) {
+            insertIntoSortedVector(arr, smaller[index]);
+            inserted[index] = true;
+        }
+    }
+
+    // Insert remaining smaller elements not covered by Jacobsthal sequence
+    for (size_t k = 0; k < smaller.size(); ++k) {
+        if (!inserted[k])
+            insertIntoSortedVector(arr, smaller[k]);
+    }
+
+    // Step 4: Insert leftover if it existed
+    if (hasLeftover) {
+        insertIntoSortedVector(arr, leftover);
+    }
 }
 
-void PmergeMe::mergeInsertSortDeque(std::deque<int> &arr) {
-    if (arr.size() < 2) return;
-    size_t mid = arr.size() / 2;
-    std::deque<int> left(arr.begin(), arr.begin() + mid);
-    std::deque<int> right(arr.begin() + mid, arr.end());
-    mergeInsertSortDeque(left);
-    mergeInsertSortDeque(right);
-    mergeDeque(arr, left, right);
+void PmergeMe::insertIntoSortedVector(std::vector<int>& arr, int value) {
+    std::vector<int>::iterator it = arr.begin();
+    while (it != arr.end() && *it < value) {
+        ++it;
+    }
+    arr.insert(it, value);
+}
+
+
+void PmergeMe::mergeInsertSortDeque(std::deque<int>& arr) {
+    if (arr.size() < 2)
+        return;
+
+    std::deque<int> larger;
+    std::deque<int> smaller;
+
+    size_t i = 0;
+    for (; i + 1 < arr.size(); i += 2) {
+        if (arr[i] < arr[i + 1]) {
+            smaller.push_back(arr[i]);
+            larger.push_back(arr[i + 1]);
+        } else {
+            smaller.push_back(arr[i + 1]);
+            larger.push_back(arr[i]);
+        }
+    }
+
+    bool hasLeftover = (arr.size() % 2 != 0);
+    int leftover = hasLeftover ? arr.back() : 0;
+
+    mergeInsertSortDeque(larger);
+
+    std::vector<int> jacob = generateJacobsthalSequence(smaller.size());
+    std::vector<bool> inserted(smaller.size(), false);
+
+    arr.assign(larger.begin(), larger.end());
+
+    for (size_t j = 1; j < jacob.size(); ++j) {
+        size_t index = jacob[j];
+        if (index < smaller.size() && !inserted[index]) {
+            insertIntoSortedDeque(arr, smaller[index]);
+            inserted[index] = true;
+        }
+    }
+
+    for (size_t k = 0; k < smaller.size(); ++k) {
+        if (!inserted[k])
+            insertIntoSortedDeque(arr, smaller[k]);
+    }
+
+    if (hasLeftover) {
+        insertIntoSortedDeque(arr, leftover);
+    }
+}
+
+void PmergeMe::insertIntoSortedDeque(std::deque<int>& arr, int value) {
+    std::deque<int>::iterator it = arr.begin();
+    while (it != arr.end() && *it < value) {
+        ++it;
+    }
+    arr.insert(it, value);
 }
 
 void PmergeMe::mergeVector(std::vector<int> &arr, std::vector<int> &left, std::vector<int> &right) {
@@ -118,29 +201,38 @@ void PmergeMe::mergeDeque(std::deque<int> &arr, std::deque<int> &left, std::dequ
 }
 
 
-void PmergeMe::sortAndMeasureTime() {
+void PmergeMe::sortAndMeasureTime()
+{
     std::cout << "Before: ";
     for (size_t i = 0; i < _vector.size(); i++) {
         std::cout << _vector[i] << " ";
     }
     std::cout << std::endl;
 
-    clock_t startVector = clock();
-    mergeInsertSortVector(_vector);
-    clock_t endVector = clock();
+    // Mesurer le temps de traitement pour trier _vector avec mergeInsertSort
+    clock_t startVector = clock(); // Capture l'heure avant de commencer le tri sur _vector
+    mergeInsertSortVector(_vector); // Appelle la fonction de tri sur _vector
+    clock_t endVector = clock(); // Capture l'heure après que le tri sur _vector est terminé
+
+    // Calculer le temps écoulé pour trier _vector en microsecondes
     double timeVector = (double)(endVector - startVector) / CLOCKS_PER_SEC * 1000000;
+
 
     clock_t startDeque = clock();
     mergeInsertSortDeque(_deque);
     clock_t endDeque = clock();
+
     double timeDeque = (double)(endDeque - startDeque) / CLOCKS_PER_SEC * 1000000;
 
+    // Afficher le contenu de _vector après le tri
     std::cout << "After: ";
     for (size_t i = 0; i < _vector.size(); i++) {
-        std::cout << _vector[i] << " ";
+        std::cout << _vector[i] << " "; // Affiche chaque élément de _vector après le tri
     }
     std::cout << std::endl;
 
+    // Afficher les résultats des temps de traitement pour _vector et _deque
     std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector: " << timeVector << " us" << std::endl;
     std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque: " << timeDeque << " us" << std::endl;
 }
+
