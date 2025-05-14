@@ -2,7 +2,8 @@
 
 int main(int argc, char **argv) {
     PmergeMe sorter;
-    sorter.processInput(argc, argv);
+    if(sorter.processInput(argc, argv) == 1)
+        return 1;
     sorter.sortAndMeasureTime();
     return 0;
 }
