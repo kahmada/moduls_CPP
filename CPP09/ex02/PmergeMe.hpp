@@ -17,7 +17,6 @@ class PmergeMe {
         PmergeMe(const PmergeMe &);
         PmergeMe &operator=(const PmergeMe &);
         ~PmergeMe();
-        
     
         int processInput(int argc, char **argv);
         void sortAndMeasureTime();
