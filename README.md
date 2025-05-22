@@ -15,7 +15,7 @@
   </p>
 
   <p>
-    🔗 GitHub Repository: <a href="https://github.com/your-username/42_cpp_modules" target="_blank">https://github.com/your-username/42_cpp_modules</a>
+    🔗 GitHub Repository: <a href="https://github.com/kahmada/moduls_CPP.git" target="_blank">https://github.com/your-username/42_cpp_modules</a>
   </p>
 
   <h2>📦 Modules Overview</h2>
@@ -60,8 +60,7 @@ make
 
   <h2>📬 Contact</h2>
   <p>
-    For questions or collaboration, feel free to contact me on 
-    <a href="mailto:your.email@example.com">your.email@example.com</a>
+    For questions or collaboration, feel free to contact me
     or open an issue on the repo.
   </p>
 
