@@ -15,7 +15,7 @@
   </p>
 
   <p>
-    🔗 GitHub Repository: <a href="https://github.com/kahmada/moduls_CPP.git" target="_blank">https://github.com/your-username/42_cpp_modules</a>
+    🔗 GitHub Repository: <a href="https://github.com/kahmada/moduls_CPP.git" target="_blank">https://github.com/kahmada/moduls_CPP.git</a>
   </p>
 
   <h2>📦 Modules Overview</h2>
